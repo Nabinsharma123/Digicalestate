@@ -33,7 +33,7 @@
             />
             <a href={searchInput ? `/search?location=${searchInput}` : ""}>
                 <button
-                    class="bg-indigo-600 flex items-center py-2 px-3 text-white text-lg rounded-md"
+                    class="bg-blue-500 flex items-center py-2 px-3 text-white text-lg rounded-md"
                 >
                     <img class="mr-2" src="/search.svg" alt="" /> Search</button
                 >
@@ -103,8 +103,8 @@
                         >
                             <h1 class="mt-3  text-lg font-semibold">₹39 Lac</h1>
                             <button
-                                class="bg-indigo-600 mt-3  p-2 rounded-lg border-2 text-white
-                                 border-indigo-600 font-semibold hover:text-indigo-600 hover:bg-white"
+                                class="bg-blue-500 mt-3  p-2 rounded-lg border-2 text-white
+                                 border-blue-500 font-semibold hover:text-blue-500 hover:bg-white"
                                 >Contact Dealer</button
                             >
                         </div>
