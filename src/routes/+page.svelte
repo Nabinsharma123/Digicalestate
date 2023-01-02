@@ -207,7 +207,7 @@
 
 <style>
     .home-center {
-        background-image: url("./home7.jpg");
+        background-image: url("/home7.jpg");
         background-position: right;
         background-repeat: no-repeat;
         background-size: cover;
