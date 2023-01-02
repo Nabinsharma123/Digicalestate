@@ -12,10 +12,12 @@
 
 <!-- home top container-->
 <!-- navbar -->
-<nav class="absolute border-b border-gray-400 w-full top-0 left-0 py-3 px-20">
-    <h1 class="text-white text-2xl">Digicalestate</h1>
-</nav>
-<div class="home-center  h-[550px] ">
+<div class="relative home-center  h-[600px] ">
+    <nav
+        class="absolute border-b border-gray-400 w-full top-0 left-0 py-3 px-20"
+    >
+        <h1 class="text-white text-2xl">Digicalestate</h1>
+    </nav>
     <div class=" pt-20 pl-20 ">
         <div class="w-[370px]">
             <h1 class="text-white text-6xl mt-3">
@@ -48,6 +50,9 @@
             </a>
         </div>
     </div>
+    <div class="absolute -bottom-[170px] left-0 right-0">
+        <img class="w-full" src="/wave.svg" alt="" />
+    </div>
 </div>
 
 <!-- home middle -->
@@ -55,12 +60,12 @@
     <div class="flex justify-between items-center">
         <div class="relative flex-1 flex justify-center">
             <img
-                class="absolute rounded-md -z-10 top-0 left-14 h-[200px]"
+                class="absolute rounded-md top-0 left-14 "
                 src="/whatIsDigicalestate3.jpg"
                 alt=""
             />
             <img
-                class="my-10 rounded-md h-[500px]"
+                class="my-10 rounded-md h-[500px] z-10"
                 src="/whatIsDigicalestate2.jpg"
                 alt=""
             />
@@ -83,15 +88,15 @@
             </p>
         </div>
     </div>
-
-    <div class="flex flex-col mt-24 items-center">
+    <!-- why choose us -->
+    <div class="flex flex-col mt-36 items-center">
         <h1 class="text-4xl  text-blue-500 font-semibold">Why choose Us?</h1>
         <div class=" flex gap-5 mt-5">
             <div
                 class="relative flex-1 h-[200px] rounded-lg p-2 border border-black"
             >
-                <div class="w-fit rounded-full border border-black">
-                    <img class="h-10  " src="/whyus1.svg" alt="" />
+                <div class="w-fit mb-2 rounded-full ">
+                    <img class="h-8  " src="/whyus1.svg" alt="" />
                 </div>
 
                 <h1 class="text-lg font-semibold">
@@ -105,7 +110,7 @@
             <div
                 class="relative flex-1 h-[200px] rounded-lg p-2 border border-black"
             >
-                <div class="w-fit rounded-full border border-black">
+                <div class="w-fit rounded-full ">
                     <img class="h-10  " src="/whyus2.svg" alt="" />
                 </div>
                 <h1 class="text-lg font-semibold">Expert team</h1>
@@ -118,7 +123,7 @@
             <div
                 class="relative flex-1 h-[200px] rounded-lg p-2 border border-black"
             >
-                <div class="w-fit rounded-full border border-black">
+                <div class="w-fit rounded-full ">
                     <img class="h-10  " src="/whyus3.svg" alt="" />
                 </div>
                 <h1 class="text-lg font-semibold">Convenient resources</h1>
@@ -130,7 +135,7 @@
             <div
                 class="relative flex-1 h-[200px] rounded-lg p-2 border border-black"
             >
-                <div class="w-fit rounded-full border border-black">
+                <div class="w-fit rounded-full ">
                     <img class="h-10  " src="/whyus4.svg" alt="" />
                 </div>
                 <h1 class="text-lg font-semibold">
@@ -143,19 +148,15 @@
             </div>
         </div>
     </div>
-    <div class="mb-10 mt-10">
+    <!-- Propuler Residence -->
+
+    <div class="mb-10 mt-32">
         <h1 class="text-blue-500  mb-1 font-semibold text-4xl">
             Populer Residences
         </h1>
         <div class="h-1 w-16 rounded-full bg-orange-400" />
     </div>
-    <!-- Propuler Residence -->
-    <div
-        on:scroll={(e) => {
-            console.log(e);
-        }}
-        class="relative mb-5"
-    >
+    <div class="relative mb-5">
         <div
             bind:this={scrollerMenu[0]}
             class=" overflow-hidden rounded-md"
@@ -177,23 +178,25 @@
             <div class=" flex w-fit gap-3">
                 <!-- cards -->
                 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as options}
-                    <div
-                        class="card overflow-hidden  rounded-md border border-[#d7d7d7] w-72"
-                    >
-                        <div class="overflow-hidden">
-                            <img
-                                class="rounded-tl-md rounded-tr-md w-full"
-                                style="transition: 0.4s ease;"
-                                src="/images1.jpg"
-                                alt=""
-                            />
+                    <a href="/123">
+                        <div
+                            class="card overflow-hidden  rounded-md border border-[#d7d7d7] w-72"
+                        >
+                            <div class="overflow-hidden">
+                                <img
+                                    class="rounded-tl-md rounded-tr-md w-full"
+                                    style="transition: 0.4s ease;"
+                                    src="/images1.jpg"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="px-3 py-2">
+                                <h1 class="text-lg mb-1">3 BHK flat</h1>
+                                <h1 class="text-xl font-bold mb-1">₹ 40 Lac</h1>
+                                <p>Maheshtala, Kolkata</p>
+                            </div>
                         </div>
-                        <div class="px-3 py-2">
-                            <h1 class="text-lg mb-1">3 BHK flat</h1>
-                            <h1 class="text-xl font-bold mb-1">₹ 40 Lac</h1>
-                            <p>Maheshtala, Kolkata</p>
-                        </div>
-                    </div>
+                    </a>
                 {/each}
                 <!-- cards -->
             </div>

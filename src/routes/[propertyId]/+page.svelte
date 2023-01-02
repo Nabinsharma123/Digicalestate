@@ -1,6 +1,11 @@
 <script>
+    // @ts-nocheck
     import { page } from "$app/stores";
-    console.log($page.params.propertyId);
+    var scrollerMenu = [];
+    function scrollClick(index, Direction) {
+        if (Direction == "right") scrollerMenu[index].scrollBy(300, 0);
+        else scrollerMenu[index].scrollBy(-300, 0);
+    }
 </script>
 
 <div class="">
@@ -59,4 +64,53 @@
             </div>
         </div>
     </div>
+
+    <div class="mb-10 mt-10">
+        <h1 class="text-blue-500  mb-1 font-semibold text-4xl">Images</h1>
+        <div class="h-1 w-16 rounded-full bg-orange-400" />
+    </div>
+
+    <div class="relative">
+        <div
+            bind:this={scrollerMenu[0]}
+            style="scroll-behavior: smooth;"
+            class=" mt-8 overflow-scroll "
+        >
+            <button
+                class="absolute z-20 top-1/2 rounded-md bg-white -right-5"
+                on:click={() => scrollClick(0, "right")}
+            >
+                <img class="h-10" src="/RightArrow.svg" alt="" />
+            </button>
+            <button
+                class="absolute z-20 top-1/2 rotate-180 rounded-md bg-white -left-5"
+                on:click={() => scrollClick(0, "left")}
+            >
+                <img class="h-10" src="/RightArrow.svg" alt="" />
+            </button>
+            <div class="flex w-fit gap-5">
+                {#each [1, 2, 3, 4] as id}
+                    <img
+                        class="image  h-[300px]"
+                        src={`/images${id}.jpg`}
+                        alt=""
+                    />
+                    <img
+                        class="image  h-[300px]"
+                        src={`/images${id}.jpg`}
+                        alt=""
+                    />
+                {/each}
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* .image {
+        transition: ease 0.4s;
+    }
+    .image:nth-child(even) {
+        border: 2px solid black;
+    } */
+</style>
