@@ -11,14 +11,9 @@
 </script>
 
 <!-- home top container-->
-<!-- navbar -->
+
 <div class="relative home-center  h-[600px] ">
-    <nav
-        class="absolute border-b border-gray-400 w-full top-0 left-0 py-3 px-20"
-    >
-        <h1 class="text-white text-2xl">Digicalestate</h1>
-    </nav>
-    <div class=" pt-20 pl-20 ">
+    <div class=" pt-16 pl-20 ">
         <div class="w-[370px]">
             <h1 class="text-white text-6xl mt-3">
                 Discover Most <span class="text-blue-500">Suitable</span> Property
