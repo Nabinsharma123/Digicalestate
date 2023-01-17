@@ -1,10 +1,10 @@
 <script>
     // @ts-nocheck
-    import { page } from "$app/stores";
+
     var scrollerMenu = [];
     function scrollClick(index, Direction) {
-        if (Direction == "right") scrollerMenu[index].scrollBy(300, 0);
-        else scrollerMenu[index].scrollBy(-300, 0);
+        if (Direction == "right") scrollerMenu[index].scrollBy(360, 0);
+        else scrollerMenu[index].scrollBy(-360, 0);
     }
 </script>
 
