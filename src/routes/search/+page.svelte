@@ -2,8 +2,8 @@
     // @ts-nocheck
     import { page } from "$app/stores";
     import { onMount } from "svelte";
+    import Search from "$lib/Search.svelte";
 
-    var searchInput;
     var propertyDiscription = [];
     var searchLocation = $page.url.searchParams.get("location");
     onMount(() => {
@@ -18,27 +18,7 @@
 
 <div>
     <div class="flex justify-center">
-        <div
-            class=" border border-[#d7d7d7]  flex items-center h-fit w-fit mt-4 rounded-lg p-2 "
-        >
-            <label for="search">
-                <img class="h-6 w-6 mr-2" src="/location.svg" alt="" />
-            </label>
-            <input
-                bind:value={searchInput}
-                id="search"
-                class="text-xl w-[400px] p-2 outline-none"
-                type="text"
-                placeholder="Search Location"
-            />
-            <a href={searchInput ? `/search?location=${searchInput}` : ""}>
-                <button
-                    class="bg-blue-500 flex items-center py-2 px-3 text-white text-lg rounded-md"
-                >
-                    <img class="mr-2" src="/search.svg" alt="" /> Search</button
-                >
-            </a>
-        </div>
+        <Search />
     </div>
     <h1 class="text-2xl mt-5">
         Search results for <strong>"{searchLocation}"</strong>

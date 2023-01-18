@@ -24,6 +24,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"firebase": "^9.15.0"
+		"@apollo/client": "^3.7.4",
+		"@nhost/nhost-js": "^1.13.1",
+		"firebase": "^9.15.0",
+		"graphql": "^16.6.0"
 	}
 }

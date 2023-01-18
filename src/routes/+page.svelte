@@ -1,6 +1,6 @@
 <script>
     // @ts-nocheck
-
+    import Search from "$lib/Search.svelte";
     var searchInput;
     var scrollerMenu = [];
 
@@ -23,27 +23,7 @@
                 all difficulties in finding a residence for you.
             </p>
         </div>
-
-        <div
-            class="bg-white flex items-center h-fit w-fit mt-4 rounded-lg p-2 "
-        >
-            <label for="search">
-                <img class="h-6 w-6 mr-2" src="/location.svg" alt="" />
-            </label>
-            <input
-                bind:value={searchInput}
-                class="text-xl w-[400px] p-2 outline-none"
-                type="text"
-                placeholder="Search Location"
-            />
-            <a href={searchInput ? `/search?location=${searchInput}` : "/"}>
-                <button
-                    class="bg-blue-500 flex items-center py-2 px-3 text-white text-lg rounded-md"
-                >
-                    <img class="mr-2" src="/search.svg" alt="" /> Search</button
-                >
-            </a>
-        </div>
+        <Search />
     </div>
     <div class="absolute -bottom-[170px] left-0 right-0">
         <img class="w-full" src="/wave.svg" alt="" />
