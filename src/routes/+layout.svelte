@@ -21,11 +21,11 @@
     });
 </script>
 
-<Navbar />
-<div class="mt-11">
+<div class="mt-11 mx-3 sm:mx-10 lg:mx-20">
+    <Navbar />
     <slot />
+    <Footer />
 </div>
-<Footer />
 
 {#if welcomePopUp}
     <WelcomePopUp
