@@ -1,10 +1,7 @@
 <script>
     // @ts-nocheck
-    import nhost from "../nhostConfig";
-    export let data;
-    var propertyData = data.post;
-    var scrollerMenu = [];
 
+    var scrollerMenu = [];
     function scrollClick(index, Direction) {
         if (Direction == "right") scrollerMenu[index].scrollBy(360, 0);
         else scrollerMenu[index].scrollBy(-360, 0);
@@ -16,9 +13,7 @@
         <div class=" flex-1 ">
             <div
                 class=" w-96 h-96 rounded-md"
-                style={`background-image: url('${nhost.storage.getPublicUrl({
-                    fileId: propertyData.mainImage_id,
-                })}');
+                style={`background-image: url("./images4.jpg");
               background-position: center;
              background-repeat: no-repeat;
              background-size: cover;
@@ -27,7 +22,7 @@
         </div>
         <div class="flex flex-[2] w-full">
             <div class="flex-[3]">
-                <h1 class="text-3xl font-semibold">{propertyData.name}</h1>
+                <h1 class="text-2xl font-semibold">Joyville Western Heights</h1>
                 <div class="grid grid-cols-3 mt-2 gap-y-4">
                     <div>
                         <h1 class="text-[#606060]">Configuration</h1>
@@ -47,24 +42,23 @@
                     </div>
                     <div>
                         <h1 class="text-[#606060]">Status</h1>
-                        {#if propertyData.status}
-                            <h2>Ready to move</h2>
-                        {:else}
-                            <h2>Solded</h2>
-                        {/if}
+                        <h2>Ready to move</h2>
                     </div>
                 </div>
                 <p class="mt-2 text-[#606060]">
-                    {propertyData.discription}
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Tempore, minima dolorem consequatur labore architecto at
+                    quaerat saepe voluptas veniam, atque tempora ad magni
+                    repellendus nostrum ea eum, laboriosam quas a.
                 </p>
             </div>
             <div
                 class="flex-1 p-5 flex flex-col items-center justify-between rounded-md bg-neutral-200 "
             >
-                <h1 class=" text-2xl font-semibold">₹{propertyData.price}</h1>
+                <h1 class=" text-2xl font-semibold">₹39 Lac</h1>
                 <button
-                    class="bg-blue-500 mt-3  p-2 rounded-lg border-2 text-white
-                border-blue-500 font-semibold hover:text-blue-500 hover:bg-white"
+                    class="bg-indigo-600 mt-3  p-2 rounded-lg border-2 text-white
+                     border-indigo-600 font-semibold hover:text-indigo-600 hover:bg-white"
                     >Contact Dealer</button
                 >
             </div>
@@ -95,12 +89,15 @@
                 <img class="h-10" src="/RightArrow.svg" alt="" />
             </button>
             <div class="flex w-fit gap-5">
-                {#each propertyData.images_id as id}
+                {#each [1, 2, 3, 4] as id}
                     <img
-                        class="image rounded-md h-[300px]"
-                        src={`${nhost.storage.getPublicUrl({
-                            fileId: id,
-                        })}`}
+                        class="image  h-[300px]"
+                        src={`/images${id}.jpg`}
+                        alt=""
+                    />
+                    <img
+                        class="image  h-[300px]"
+                        src={`/images${id}.jpg`}
                         alt=""
                     />
                 {/each}

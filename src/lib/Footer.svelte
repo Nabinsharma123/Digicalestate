@@ -1,18 +1,17 @@
-<div class="mt-12">
-    <div class="-mx-20 -mb-1 hidden sm:block">
-        <img class="w-full  " src="/waveFooter.svg" alt="" />
-    </div>
-</div>
-
 <footer
-    class="relative  -mx-3 sm:-mx-20 bg-gray-900 flex flex-col sm:flex-row justify-between items-center h-[250px] sm:h-[300px]"
+    class="relative mt-44 bg-gray-900 flex justify-between items-center h-[300px]"
 >
-    <div class="sm:mx-20 flex flex-1 gap-2 items-center">
+    <img
+        class="absolute w-full right-0 -top-[170px] left-0 "
+        src="/waveFooter.svg"
+        alt=""
+    />
+    <div class="mx-20 flex flex-1 gap-2 items-center">
         <div class="bg-white p-2 rounded-md">
-            <img class="h-6 sm:h-10  " src="/Navlogo.png" alt="" />
+            <img class="h-10  " src="/Navlogo.png" alt="" />
         </div>
     </div>
-    <div class="text-white flex gap-4 justify-evenly flex-1">
+    <div class="text-white flex justify-evenly flex-1">
         <div>
             <h1 class="text-violet-600 text-xl font-semibold mb-5">
                 Follow Us
