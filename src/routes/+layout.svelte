@@ -21,12 +21,6 @@
     });
 </script>
 
-<div class="mt-11 mx-3 sm:mx-10 lg:mx-20">
-    <Navbar />
-    <slot />
-    <Footer />
-</div>
-
 {#if welcomePopUp}
     <WelcomePopUp
         on:close={() => {
@@ -34,3 +28,8 @@
         }}
     />
 {/if}
+<div class="mt-11 mx-3 sm:mx-10 lg:mx-20">
+    <Navbar />
+    <slot />
+    <Footer />
+</div>
