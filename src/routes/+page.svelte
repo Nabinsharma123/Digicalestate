@@ -1,7 +1,6 @@
 <script>
-    // @ts-nocheck
     import Search from "$lib/Search.svelte";
-    var searchInput;
+
     var scrollerMenu = [];
 
     function scrollClick(index, Direction) {
@@ -10,11 +9,26 @@
     }
 </script>
 
+<!-- for mobile -->
+<div class="sm:hidden mt-20  mb-10">
+    <div class="">
+        <h1 class="text-4xl font-semibold text-center text-gray-700 mt-3">
+            Discover Most <span class="text-blue-500">Suitable</span> Property
+        </h1>
+        <p class="mt-5 text-slate-400 font-semibold">
+            Find a variety of properties that suit you very easily. forgot all
+            difficulties in finding a residence for you.
+        </p>
+    </div>
+</div>
+
 <!-- home top container-->
 
-<div class="relative home-center  h-[600px] ">
-    <div class=" pt-16 pl-20 ">
-        <div class="w-[370px]">
+<div
+    class="relative home-center flex justify-center items-center sm:block rounded-lg sm:rounded-none p-5 sm:p-20 sm:-mx-20 h-[350px] sm:h-[600px] "
+>
+    <div class=" w-[400px] sm:w-[600px]  ">
+        <div class="hidden mb-6 sm:block w-[370px]">
             <h1 class="text-white text-6xl mt-3">
                 Discover Most <span class="text-blue-500">Suitable</span> Property
             </h1>
@@ -25,15 +39,15 @@
         </div>
         <Search />
     </div>
-    <div class="absolute -bottom-[170px] left-0 right-0">
+    <div class="-mx-20 hidden sm:block  left-0 right-0">
         <img class="w-full" src="/wave.svg" alt="" />
     </div>
 </div>
 
 <!-- home middle -->
-<div class="mx-20 mt-10">
-    <div class="flex justify-between items-center">
-        <div class="relative flex-1 flex justify-center">
+<div class="relative mt-10">
+    <div class=" flex gap-5 justify-between items-center">
+        <div class="relative hidden sm:flex flex-1 justify-center">
             <img
                 class="absolute rounded-md top-0 left-14 "
                 src="/whatIsDigicalestate3.jpg"
@@ -51,10 +65,12 @@
             />
         </div>
         <div class="flex-1 flex flex-col ">
-            <h1 class="mt-10 mb-5 text-blue-500 text-4xl font-semibold">
+            <h1
+                class="mt-10 mb-5 text-center text-blue-500 text-4xl font-semibold"
+            >
                 What is Digicalestate?
             </h1>
-            <p class="font-semibold text-lg">
+            <p class="font-semibold text-center text-lg">
                 Our website is dedicated to helping you find your dream home,
                 whether you're a first-time buyer, seasoned investor, or anyone
                 in between. We understand that the process of buying or selling
@@ -66,10 +82,11 @@
     <!-- why choose us -->
     <div class="flex flex-col mt-36 items-center">
         <h1 class="text-4xl  text-blue-500 font-semibold">Why choose Us?</h1>
-        <div class=" flex gap-5 mt-5">
-            <div
-                class="relative flex-1 h-[200px] rounded-lg p-2 border border-black"
-            >
+        <div
+            class=" w-full grid gap-4 mt-5"
+            style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) ;"
+        >
+            <div class="relative flex-1  rounded-lg p-2 border border-black">
                 <div class="w-fit mb-2 rounded-full ">
                     <img class="h-8  " src="/whyus1.svg" alt="" />
                 </div>
@@ -125,7 +142,7 @@
     </div>
     <!-- Propuler Residence -->
 
-    <div class="mb-10 mt-32">
+    <!-- <div class="mb-10 mt-32">
         <h1 class="text-blue-500  mb-1 font-semibold text-4xl">
             Populer Residences
         </h1>
@@ -151,7 +168,7 @@
             </button>
 
             <div class=" flex w-fit gap-3">
-                <!-- cards -->
+                
                 {#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as options}
                     <a href="/123">
                         <div
@@ -173,21 +190,21 @@
                         </div>
                     </a>
                 {/each}
-                <!-- cards -->
+                
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Propuler Residence -->
 </div>
 
 <style>
     .home-center {
         background-image: url("/home7.jpg");
-        background-position: right;
+        background-position: 70%;
         background-repeat: no-repeat;
         background-size: cover;
     }
-    .card:hover img {
+    /* .card:hover img {
         transform: scale(1.1);
-    }
+    } */
 </style>

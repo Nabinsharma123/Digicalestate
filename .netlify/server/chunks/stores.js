@@ -1,4 +1,4 @@
-import { g as getContext } from "./index.js";
+import { l as getContext } from "./index2.js";
 const getStores = () => {
   const stores = getContext("__svelte__");
   return {
@@ -12,6 +12,7 @@ const getStores = () => {
   };
 };
 const page = {
+  /** @param {(value: any) => void} fn */
   subscribe(fn) {
     const store = getStores().page;
     return store.subscribe(fn);

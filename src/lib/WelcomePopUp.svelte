@@ -1,6 +1,4 @@
 <script>
-    // @ts-nocheck
-
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher();
     import Close from "carbon-icons-svelte/lib/Close.svelte";
@@ -59,20 +57,20 @@
 </script>
 
 <div
-    class="fixed flex justify-center items-center  h-screen w-screen z-50 top-0 left-0"
+    class="fixed flex justify-center items-end sm:items-center  h-screen w-screen z-50 top-0 left-0"
     style="background-color: rgba(0, 0, 0, 0.5);"
     transition:fade
 >
     <div
-        class="relative bg-white p-4 h-[400px] w-[600px] rounded-md"
+        class="relative bg-white p-4 w-screen h-[450px] sm:h-[400px] sm:w-[600px] rounded-md"
         transition:fly={{ y: 200 }}
     >
         <button
             on:click={() => dispatch("close")}
-            class="absolute flex justify-center items-center bg-white -top-4 -right-4 h-10 w-10 rounded-full border-2 border-gray-800"
+            class="absolute flex justify-center items-center bg-white top-2 sm:-top-4 right-2 sm:-right-4 h-10 w-10 rounded-full border-2 border-gray-800"
             ><Close size={32} /></button
         >
-        <div class="flex gap-8 flex-col items-center">
+        <div class="flex mt-6 sm:mt-0 gap-8 flex-col items-center">
             <h1 class="text-3xl font-mono font-semibold">
                 Welcome to Digicalestate
             </h1>
