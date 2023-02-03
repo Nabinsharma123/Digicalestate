@@ -17,9 +17,11 @@
                 src={`https://avatars.dicebear.com/api/micah/${$userAuthData.phoneNumber}.svg`}
                 alt=""
             />
-            <h1 class="font-semibold">{$userAuthData.phoneNumber}</h1>
+            <h1 class="hidden sm:block font-semibold">
+                {$userAuthData.phoneNumber}
+            </h1>
             <button
-                class="border-2 border-black font-semibold rounded-md p-1"
+                class="border-2 hidden sm:block border-black font-semibold rounded-md p-1"
                 on:click={() => {
                     signOut(auth);
                 }}>SignOut</button
