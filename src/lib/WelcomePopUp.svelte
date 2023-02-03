@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from "svelte";
+    import { clickOutside } from "./click_outside.js";
     const dispatch = createEventDispatcher();
     import Close from "carbon-icons-svelte/lib/Close.svelte";
     import { fade, fly } from "svelte/transition";
@@ -64,14 +65,11 @@
     <div
         class="relative bg-white p-4 w-screen h-[450px] sm:h-[400px] sm:w-[600px] rounded-md"
         transition:fly={{ y: 200 }}
+        use:clickOutside
+        on:outclick={() => dispatch("close")}
     >
-        <button
-            on:click={() => dispatch("close")}
-            class="absolute flex justify-center items-center bg-white top-2 sm:-top-4 right-2 sm:-right-4 h-10 w-10 rounded-full border-2 border-gray-800"
-            ><Close size={32} /></button
-        >
         <div class="flex mt-6 sm:mt-0 gap-8 flex-col items-center">
-            <h1 class="text-3xl font-mono font-semibold">
+            <h1 class="text-3xl text-center font-mono font-semibold">
                 Welcome to Digicalestate
             </h1>
             <div class="text-7xl" transition:fade={{ delay: 500 }}>🙏🏻</div>
