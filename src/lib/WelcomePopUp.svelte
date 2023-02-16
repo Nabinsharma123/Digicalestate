@@ -93,7 +93,7 @@
 
                         <input
                             bind:value={phoneNumber}
-                            class="focus:outline-none w-36"
+                            class="focus:outline-none border-none w-36"
                             type="text"
                             id="phone"
                             maxlength="10"

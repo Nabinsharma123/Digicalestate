@@ -3,6 +3,7 @@
     import { onMount } from "svelte";
     import nhost from "../../nhostConfig";
     import gql from "graphql-tag";
+    import { Heading, P, Button, Spinner, Img } from "flowbite-svelte";
 
     var propertyDiscription = [];
     var results = [];
@@ -30,43 +31,31 @@
         searchLocation = $page.url.searchParams.get("location");
         var query = gql`
             query MyQuery {
-                District(where: { name: { _eq: "${searchLocation}" } }) {
-                    Estate {
-                        name
-                        price
-                        status
-                        mainImage_id
-                       
-                        id
-                        discription
+                Flat(
+                    where: {
+                        _or: [
+                            { City: { name: { _ilike: "${searchLocation}" } } }
+                            { District: { name: { _ilike: "${searchLocation}" } } }
+                        ]
                     }
-                }
-                City(where: { name: { _eq: "${searchLocation}" } }) {
-                    Estate {
-                        name
-                        price
-                        status
-                        mainImage_id
-                     
-                        id
-                        discription
-                    }
+                ) {
+                    id
+                    BHK
+                    address
+                    mainImage_id
+                    name
+                    price
+                    status
+                    super_area
                 }
             }
         `;
 
         var res = await nhost.graphql.request(query);
 
-        if (res.data.City.length != 0) {
-            res.data.City[0].Estate.map((e) => {
-                results = [...results, e];
-            });
-        }
-        if (res.data.District.length != 0) {
-            res.data.District[0].Estate.map((e) => {
-                results = [...results, e];
-            });
-        }
+        res.data.Flat.map((e) => {
+            results = [...results, e];
+        });
 
         isSearchLoading = false;
         return results;
@@ -74,14 +63,14 @@
 </script>
 
 <div>
-    <h1 class="text-2xl mt-5">
-        Search results for <strong>"{searchLocation}"</strong>
+    <h1 class="text-xl mt-5">
+        Search results for Plots in <strong>"{searchLocation}"</strong>
     </h1>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-8 -mx-3 sm:-mx-0  ">
         {#if isSearchLoading}
             <div class="h-[400px] w-full flex justify-center items-center">
-                <img class="h-14" src="/loading.svg" alt="" />
+                <div class="text-center"><Spinner size={10} /></div>
             </div>
         {:else}
             {#if !isSearchLoading && results.length == 0}
@@ -90,90 +79,150 @@
                 </div>
             {/if}
 
-            <div class="  w-full  ">
+            <div class=" w-full ">
                 {#each results as result}
-                    <a href={`/${result.id}`}>
+                    <!--  -->
+                    <a class="w-fit" href={`/property/Flat?id=${result.id}`}>
                         <div
-                            class=" gap-3 cursor-pointer boxShadowElement flex mb-3 p-3 border border-[#d7d7d7]  rounded-lg "
+                            class="boxShadowElement border border-[#d7d7d7]  rounded-lg flex flex-col sm:flex-row  sm:w-[600px] h-[200px] md:w-[700px] md:h-[200px] lg:w-[900px] lg-h[250px]"
                         >
-                            <div class="flex-1 rounded-md ">
-                                <!-- https://iiteddaobnfvbttwwwgi.nhost.run/v1/storage/files/${result.mainImage_id}?w=400 -->
-                                <img
-                                    class="h-28 w-28 object-cover rounded-md"
-                                    src={`/images2.jpg`}
-                                    alt=""
-                                />
-                                <h2 class="text-sm text-center">
-                                    {result.name}
-                                </h2>
-                            </div>
-
-                            <div class="flex-[2]">
-                                <h1 class="  text-lg font-semibold">
-                                    ₹{result.price}
-                                </h1>
-
-                                <h2 class="text-sm text-gray-600">
-                                    Plot/Land for Sale in Action Area 3,
-                                    Rajarhat Newtown
-                                </h2>
-
-                                <div>
-                                    <h1>Plot Area</h1>
-                                </div>
-
-                                <!-- <div class="grid grid-cols-3 mt-2 gap-y-4">
-                                    <div>
-                                        <h1 class="text-[#606060]">
-                                            Configuration
-                                        </h1>
-                                        <h2>3 BHK</h2>
-                                    </div>
-                                    <div>
-                                        <h1 class="text-[#606060]">Bathroom</h1>
-                                        <h2>1</h2>
-                                    </div>
-                                    <div>
-                                        <h1 class="text-[#606060]">kitchen</h1>
-                                        <h2>1</h2>
-                                    </div>
-                                    <div>
-                                        <h1 class="text-[#606060]">
-                                            Furnishing
-                                        </h1>
-                                        <h2>Unfurnished</h2>
-                                    </div>
-                                    <div>
-                                        <h1 class="text-[#606060]">Status</h1>
-                                        {#if result.status}
-                                            <h2>Ready to move</h2>
-                                        {:else}
-                                            <h2>Solded</h2>
-                                        {/if}
+                            <div class="flex" style="flex: 3;">
+                                <div class=" relative" style="flex:2;">
+                                    <img
+                                        class="w-full h-[150px] sm:h-full object-cover rounded-md"
+                                        src={`https://iiteddaobnfvbttwwwgi.nhost.run/v1/storage/files/${result.mainImage_id}?w=400`}
+                                        alt=""
+                                    />
+                                    <div
+                                        class="absolute bottom-0 text-white bg-slate-600/70 w-full text-sm text-center"
+                                    >
+                                        {result.name || ""}
                                     </div>
                                 </div>
-                                <p
-                                    bind:this={propertyDiscription[result.id]}
-                                    class="mt-2  text-[#606060]"
-                                >
-                                    {result.discription}
-                                </p> -->
-                            </div>
 
-                            <!-- <div
-                                class="flex-1 p-3 flex flex-col justify-between items-center rounded-md bg-neutral-200 "
+                                <div class="p-4" style="flex:3;">
+                                    <Heading
+                                        customSize="text-sm sm:text-lg "
+                                        class=" font-semibold"
+                                    >
+                                        {result.address}
+                                    </Heading>
+
+                                    <div
+                                        class="mt-2 grid gap-2 sm:gap-3"
+                                        style="grid-template-columns: repeat(auto-fit,minmax(50px,1fr));"
+                                    >
+                                        <div>
+                                            <Heading
+                                                customSize="text-xs sm:text-base"
+                                                color=" text-gray-600"
+                                            >
+                                                BHK
+                                            </Heading>
+                                            <h1 class="text-xs sm:text-sm">
+                                                {result.BHK}
+                                            </h1>
+                                        </div>
+                                        <div>
+                                            <Heading
+                                                customSize="text-xs sm:text-base"
+                                                color=" text-gray-600"
+                                            >
+                                                Super_area
+                                            </Heading>
+                                            <h1 class="text-xs sm:text-sm">
+                                                {result.super_area || "--"}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class=" flex sm:flex-col p-2  justify-around items-center bg-neutral-200 "
+                                style="flex: 1;"
                             >
-                                <h1 class="  text-lg font-semibold">
-                                    ₹{result.price}
+                                <h1 class="text-md sm:text-lg  font-semibold">
+                                    ₹{result.price || ""}
                                 </h1>
-                                <button
-                                    class="bg-blue-500   p-2 rounded-lg border-2 text-white
-                                 border-blue-500 font-semibold hover:text-blue-500 hover:bg-white"
-                                    >Contact Dealer</button
+
+                                <Button gradient color="blue"
+                                    >Contact Dealer</Button
                                 >
-                            </div> -->
+                            </div>
                         </div>
                     </a>
+                    <!--  -->
+                    <!-- <a class="w-fit" href={`/property/Flat?id=${result.id}`}>
+                        <div
+                            class=" sm:w-[600px] h-[150px] md:w-[700px] md:h-[200px] lg:w-[900px] lg-h[250px] gap-2 sm:gap-3 cursor-pointer boxShadowElement flex mb-3 sm:p-1 md:p-3 border border-[#d7d7d7]  rounded-lg "
+                        >
+                            <div
+                                class="relative w-full flex-shrink-0 flex-[2] rounded-md "
+                            >
+                                
+                                <img
+                                    class="w-full h-full object-cover rounded-md"
+                                    src={`https://iiteddaobnfvbttwwwgi.nhost.run/v1/storage/files/${result.mainImage_id}?w=400`}
+                                    alt=""
+                                />
+
+                                <div
+                                    class="absolute bottom-0 text-white bg-slate-600/70 w-full text-sm text-center"
+                                >
+                                    {result.name || ""}
+                                </div>
+                            </div>
+
+                            <div class=" flex-[3]   p-2">
+                                <Heading
+                                    customSize="text-sm sm:text-lg "
+                                    class=" font-semibold"
+                                >
+                                    {result.address}
+                                </Heading>
+
+                                <div
+                                    class="mt-2 grid gap-2 sm:gap-3"
+                                    style="grid-template-columns: repeat(auto-fit,minmax(50px,1fr));"
+                                >
+                                    <div>
+                                        <Heading
+                                            customSize="text-xs sm:text-base"
+                                            color=" text-gray-600"
+                                        >
+                                            BHK
+                                        </Heading>
+                                        <h1 class="text-xs sm:text-sm">
+                                            {result.BHK}
+                                        </h1>
+                                    </div>
+                                    <div>
+                                        <Heading
+                                            customSize="text-xs sm:text-base"
+                                            color=" text-gray-600"
+                                        >
+                                            Super_area
+                                        </Heading>
+                                        <h1 class="text-xs sm:text-sm">
+                                            {result.super_area || "--"}
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex-[2] p-3  text-sm sm:text-md flex flex-col justify-between items-center sm:rounded-md bg-neutral-200 "
+                            >
+                                <h1 class="text-md sm:text-lg  font-semibold">
+                                    ₹{result.price || ""}
+                                </h1>
+
+                                <Button gradient color="blue"
+                                    >Contact Dealer</Button
+                                >
+                            </div>
+                        </div>
+                    </a> -->
                 {/each}
             </div>
         {/if}

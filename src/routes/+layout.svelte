@@ -28,8 +28,9 @@
         }}
     />
 {/if}
-<div class="mt-11 mx-3 sm:mx-10 lg:mx-20">
+<div class="mt-11 relative mx-3 sm:mx-10 lg:mx-20">
     <Navbar />
     <slot />
+
     <Footer />
 </div>

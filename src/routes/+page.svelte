@@ -1,6 +1,8 @@
 <script>
     import Search from "$lib/Search.svelte";
 
+    import { Heading, P, A, Mark, Secondary, Span } from "flowbite-svelte";
+
     var scrollerMenu = [];
 
     function scrollClick(index, Direction) {
@@ -12,34 +14,48 @@
 <!-- for mobile -->
 <div class="sm:hidden mt-20  mb-10">
     <div class="">
-        <h1 class="text-4xl font-semibold text-center text-gray-700 mt-3">
-            Discover Most <span class="text-blue-500">Suitable</span> Property
-        </h1>
-        <p class="mt-5 text-slate-400 font-semibold">
+        <Heading class="text-4xl font-semibold text-center text-gray-700 mt-3">
+            Discover Most <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500"
+                >Suitable</span
+            > Property
+        </Heading>
+        <P size="xl" class="mt-5 text-center text-slate-400 font-semibold">
             Find a variety of properties that suit you very easily. forgot all
             difficulties in finding a residence for you.
-        </p>
+        </P>
     </div>
 </div>
 
 <!-- home top container-->
 
 <div
-    class="relative home-center flex justify-center items-center sm:block rounded-lg sm:rounded-none p-5 sm:p-20 sm:-mx-20 h-[350px] sm:h-[600px] "
+    class="relative home-center flex justify-center items-center sm:block rounded-lg sm:rounded-none p-5 sm:p-20 sm:-mx-20 h-[350px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
 >
-    <div class=" w-[400px] sm:w-[600px]  ">
-        <div class="hidden mb-6 sm:block w-[370px]">
-            <h1 class="text-white text-6xl mt-3">
-                Discover Most <span class="text-blue-500">Suitable</span> Property
-            </h1>
-            <p class="mt-5 text-slate-400 font-semibold">
+    <div class=" w-[400px] sm:w-[600px]">
+        <div class="hidden mb-6 sm:block sm:w-[370px] md:w-[500px]">
+            <Heading
+                color="text-white"
+                customSize="text-4xl font-extrabold  md:text-5xl lg:text-6xl"
+                class=" mt-3"
+            >
+                Discover Most <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500"
+                    >Suitable</span
+                > Property
+            </Heading>
+            <P
+                size="xl"
+                space="tighter"
+                class="mt-5 text-slate-400 font-semibold"
+            >
                 Find a variety of properties that suit you very easily. forgot
                 all difficulties in finding a residence for you.
-            </p>
+            </P>
         </div>
         <Search />
     </div>
-    <div class="-mx-20 hidden sm:block  left-0 right-0">
+    <div class="-mx-20 hidden sm:block ">
         <img class="w-full" src="/wave.svg" alt="" />
     </div>
 </div>
@@ -65,23 +81,25 @@
             />
         </div>
         <div class="flex-1 flex flex-col ">
-            <h1
+            <Heading
                 class="mt-10 mb-5 text-center text-blue-500 text-4xl font-semibold"
             >
                 What is Digicalestate?
-            </h1>
-            <p class="font-semibold text-center text-lg">
+            </Heading>
+            <P weight="bold" class=" text-center text-lg">
                 Our website is dedicated to helping you find your dream home,
                 whether you're a first-time buyer, seasoned investor, or anyone
                 in between. We understand that the process of buying or selling
                 a home can be overwhelming, which is why we've created a
                 one-stop-shop for all your real estate needs.
-            </p>
+            </P>
         </div>
     </div>
     <!-- why choose us -->
     <div class="flex flex-col mt-36 items-center">
-        <h1 class="text-4xl  text-blue-500 font-semibold">Why choose Us?</h1>
+        <Heading class="text-4xl text-center text-blue-500 font-semibold"
+            >Why choose Us?</Heading
+        >
         <div
             class=" w-full grid gap-4 mt-5"
             style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) ;"
