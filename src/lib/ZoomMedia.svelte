@@ -20,8 +20,7 @@
     >
         {#if type == "Image"}
             <img
-                class="rounded-md"
-                style="height: 90vh;"
+                class="rounded-md w-[70vw] sm:w-full sm:h-[90vh]"
                 src={`${nhost.storage.getPublicUrl({
                     fileId: id,
                 })}`}
@@ -29,11 +28,10 @@
             />
         {:else if type == "Video"}
             <video
-                class="image rounded-md "
+                class=" w-[70vw] sm:w-full sm:h-[90vh] rounded-md "
                 autoplay
                 controls
                 muted
-                style="height: 90vh;"
             >
                 <track kind="captions" />
                 <source

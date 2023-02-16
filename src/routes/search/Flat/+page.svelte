@@ -87,7 +87,7 @@
                             class="boxShadowElement border border-[#d7d7d7]  rounded-lg flex flex-col sm:flex-row  sm:w-[600px] h-[200px] md:w-[700px] md:h-[200px] lg:w-[900px] lg-h[250px]"
                         >
                             <div class="flex" style="flex: 3;">
-                                <div class=" relative" style="flex:2;">
+                                <div class="p-2 relative" style="flex:2;">
                                     <img
                                         class="w-full h-[150px] sm:h-full object-cover rounded-md"
                                         src={`https://iiteddaobnfvbttwwwgi.nhost.run/v1/storage/files/${result.mainImage_id}?w=400`}
